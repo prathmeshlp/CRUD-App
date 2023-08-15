@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, NgModel } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CoreService } from '../core/core.service';
 import { EmployeeService } from '../services/employee.service';
@@ -11,6 +11,7 @@ import { EmployeeService } from '../services/employee.service';
 })
 export class EmpAddEditComponent implements OnInit {
   empForm: FormGroup;
+  
 
   education: string[] = [
     'Matric',
@@ -48,7 +49,7 @@ export class EmpAddEditComponent implements OnInit {
     if (this.empForm.valid) {
       if (this.data) {
         this._empService
-          .updateEmployee(this.data.id, this.empForm.value)
+          .updateEmployee(this.data._id, this.empForm.value)
           .subscribe({
             next: (val: any) => {
               this._coreService.openSnackBar('Employee detail updated!');

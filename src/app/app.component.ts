@@ -72,7 +72,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  deleteEmployee(id: number) {
+  deleteEmployee(id: String) {
     this._empService.deleteEmployee(id).subscribe({
       next: (res) => {
         this._coreService.openSnackBar('Employee deleted!', 'done');
